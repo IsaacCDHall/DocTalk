@@ -16,28 +16,40 @@ $(document).ready(function() {
     let firstName = $('#firstNameInput').val();
     let lastName = $('#lastNameInput').val();
     let query = $('#medIssueInput').val();
-    const docs = [];
+    const docsBio = [];
+    const docsContact = [];
     const findDocs = sQuery.querySearch(firstName, lastName, query);
-    console.log(findDocs);
     // let name = sQ.nameMaker(firstName, lastName);
     // console.log (name);
     $('input').val("");
 
     findDocs.then(function(response) {
       let legible = JSON.parse(response);
-      console.log(legible.data[1].profile.bio);
+      // console.log(legible.data[1].profile.bio);
       legible.data.forEach(function(index){
+        // console.log(index);
+        docsBio.push(index.profile.bio);
+        $(".result").append(`${index.profile.first_name} ${index.profile.last_name}<br>`);
 
-        console.log(index.profile)
-        docs.push(index.profile.bio);
-        $(".result").append(`${index.profile.first_name} ${index.profile.last_name}<br>${index.profile.bio} <br><br>`);
+        index.practices.forEach(function(locations){
+          if (locations.accepts_new_patients === true) {
+            
+            console.log(locations.visit_address.street);
+            $(".result").append(`${locations.visit_address.street}<br> `);
 
+          }else {
+            console.log("false")
+          }
+        });
+
+        $(".result").append(`${index.profile.bio} <br><br>`);
+        console.log(index.practices);
       });
-      // console.log(docs);
+      // console.log(docsBio);
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
     });
-    // console.log(cardsArr);
+
 
 
 
