@@ -18,4 +18,27 @@ export class DocTalker{
     console.log(name)
     return name;
   }
+  eachInArr(arr, element){
+    arr.forEach(function(element){
+      console.log(element)
+    })
+  }
+
 }
+
+
+
+
+// const user = {
+//     id: 101,
+//     email: 'jack@dev.com',
+//     personalInfo: {
+//         name: 'Jack',
+//         address: {
+//             line1: 'westwish st',
+//             line2: 'washmasher',
+//             city: 'wallas',
+//             state: 'WX'
+//         }
+//     }
+// }

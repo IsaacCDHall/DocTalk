@@ -30,9 +30,17 @@ $(document).ready(function() {
       if (this.readyState === 4 && this.status === 200) {
         const response = JSON.parse(this.responseText);
         console.log(response);
+        // console.log(response.meta.total);
+        // console.log(response.data[0].profile.bio);
+
+        // sQ.eachInArr(response.data);
+        console.log(response.data[0].profile.bio);
+        console.log(response.data[1].profile.bio);
+        console.log(response.data[2].profile.bio);
+        console.log(response.data[3].profile.bio);
+        return response;
       }
     }
-
     request.open("GET", url, true);
     request.send();
     // console.log(response);
