@@ -41,6 +41,9 @@ $(document).ready(function() {
         return response;
       }
     }
+
+    //create seperation with promise 
+
     request.open("GET", url, true);
     request.send();
     // console.log(response);

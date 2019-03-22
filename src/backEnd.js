@@ -23,7 +23,6 @@ export class DocTalker{
       console.log(element)
     })
   }
-
 }
 
 
