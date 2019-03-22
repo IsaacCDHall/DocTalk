@@ -1,0 +1,21 @@
+h1  {
+  color: green;
+}
+
+
+body {
+  background-color: lightblue;
+  text-align: center;
+  color: rgba(255, 116, 23, 1);
+  form{
+    display: flex;
+    justify-content: center;
+
+    input{
+      width: auto;
+    }
+  }
+  .result{
+    display: none;
+  }
+}

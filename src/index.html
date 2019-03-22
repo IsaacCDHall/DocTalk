@@ -7,12 +7,32 @@
   <body>
     <div class="container">
       <h1>Doc Talk</h1>
-      <label for="location">Enter a location:</label>
-      <input id="location" type="text">
-      <button class="btn-success" id="docLocation">Find that doc</button>
-      <div class="errors"></div>
-      <div class="showDoc"></div>
-      <div class="showOther"></div>
+      <br>
+      <form id="ageForm">
+        <div class="form-group">
+          <p>
+            Enter medical issue:
+            <input id="medIssueInput"class="form-control" type="text" required>
+          </p>
+          <p>
+            Sort by first name:
+          <input id="firstNameInput"class="form-control" type="text" required>
+          </p>
+          <p>
+            Sort by last name:
+          <input id="lastNameInput"class="form-control" type="text" required>
+          </p>
+          <br>
+          <button class="btn btn-success"type="submit">Submit</button>
+        </div>
+      </form>
     </div>
+    <div class="result">
+
+    </div>
+    <div class="error">
+
+    </div>
+
   </body>
 </html>
