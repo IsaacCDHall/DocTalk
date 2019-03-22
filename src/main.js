@@ -25,26 +25,36 @@ $(document).ready(function() {
 
     findDocs.then(function(response) {
       let legible = JSON.parse(response);
-      // console.log(legible.data[1].profile.bio);
-      legible.data.forEach(function(index){
-        // console.log(index);
-        docsBio.push(index.profile.bio);
-        $(".result").append(`${index.profile.first_name} ${index.profile.last_name}<br>`);
+      console.log(legible.meta.count);
+      if (legible.meta.count === 0) {
+        $(".result").append("There are no results for this search");
+      }else {
+        // console.log(legible.data[1].profile.bio);
+        legible.data.forEach(function(index){
+          // console.log(index);
+          docsBio.push(index.profile.bio);
+          $(".result").append(`${index.profile.first_name} ${index.profile.last_name}<br>`);
+          console.log(index.practices);
+          index.practices.forEach(function(locations){
+            console.log(locations.accepts_new_patients);
+            if (locations.accepts_new_patients == true) {
+              console.log("true");
+              console.log(locations.visit_address);
 
-        index.practices.forEach(function(locations){
-          if (locations.accepts_new_patients === true) {
-            
-            console.log(locations.visit_address.street);
-            $(".result").append(`${locations.visit_address.street}<br> `);
+              $(".result").append(`${locations.visit_address.street}, ${locations.visit_address.city}, ${locations.visit_address.state}  ${locations.visit_address.zip} <br> `);
+            }else {
 
-          }else {
-            console.log("false")
-          }
+              console.log("false")
+            }
+          });
+
+
+          $(".result").append(`${index.profile.bio} <br><br>`);
+          console.log(index.practices);
+
         });
 
-        $(".result").append(`${index.profile.bio} <br><br>`);
-        console.log(index.practices);
-      });
+      }
       // console.log(docsBio);
     }, function(error) {
       $('.showErrors').text(`There was an error processing your request: ${error.message}`);
