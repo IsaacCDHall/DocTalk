@@ -1,37 +1,25 @@
-* A user should be able to enter a medical issue to receive a list of doctors in the Portland area that fit the search query.
-* A user should be able to to enter a name to receive a list of doctors in the Portland area that fit the search query.
-* If the query response includes any doctors, the following information should be included about each doctor: first name, last name, address, phone number, website and whether or not the doctor is accepting new patients (the API provides this data).
-* If the API call results in an error (any message not a 200 OK), the application should return a notification that states what the error is.
-* If the query response doesn't include any doctors (for instance, if no doctors meet the search criteria), the application should return a notification that states that no doctors meet the criteria. (This is not an error so it should be handled separately from any errors.)
 
-## Planning
+# DocTalk
+## Description
 
-1. Configuration/dependencies
-  * This should include ALL dependencies.
-  * It should also include WHERE they are defined and used in the project
-  * It could include a short description of what each does for you
+_This application uses the Better Doctors API to allow users to search for doctors in Portland._
 
-2. Specs
-  * Spec 1: Description, input, output.
-  * Spec 2: Description, input, output.
+## Specs
 
-3. Integration
-  * Initial routes or index pages with all dependencies in Controller/index.html head
-  * Template/html page for ...
-  * Template/html page for ...
-  * Template/html page for ... (one for each route/integrated user story)
-  * Display...
-  * Integrate feature that...
+1. Takes in search form inputs as variables to call methods upon.
+2. Queries the BetterDoctor API using the search terms.
+3. Waits for response and stores parsed response as variable (if received without error).
+4. Displays a message if search results are empty.
+5. Loops over response array, prints appropriate information to DOM.
 
-4. UX/UI
-  * Include and modify bootstrap/materialize/Sass etc.
-  * Develop custom style
+## Installation and Setup
 
-5. Polish
-  * Refactor minor portion of...
-  * Delete unused...
-  * Make README awesome
-
+1. Clone this repository
+2. Make a file called .env in the root directory. Sign up for the Better Doctor API to get a key, and place it in this file like this:
+exports.apiKey=KEYGOESHERE
+3. Install Dependencies using this command: npm i
+4. Start web app with command: npm run start
+5. Other commands include: npm run build, npm run lint, npm run test
 ### License
 This project is licensed under the MIT license, Copyright (c) 2019 [Isaac Hall](/LICENSE.md)
 
